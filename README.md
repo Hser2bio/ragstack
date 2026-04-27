@@ -80,12 +80,18 @@ OPENROUTER_API_KEY=tu_api_key_opcional
 ```bash
 docker compose up -d
 ```
-
+### 5. Instalar modelos locales en Ollama
+```bash
+docker exec -it ollama ollama pull llama3
+docker exec -it ollama ollama pull phi3
+docker exec -it ollama ollama list
+docker restart  open-webui
+```
 ---
 
 ## Acceso
 
-* WebUI → http://localhost:3000
+* WebUI → http://localhost:3000 (tarda bastante en cada reinicio, esperar al menos 30 segs)
 * API RAG → http://localhost:5000
 
 ---
