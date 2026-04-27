@@ -111,6 +111,8 @@ Si detecta que es algo actual:
 * hace búsqueda
 * añade contexto
 * responde con datos recientes
+  
+<img width="1193" height="400" alt="image" src="https://github.com/user-attachments/assets/14ff88d4-8b50-4e19-bcb7-c75817736f17" />
 
 ---
 
