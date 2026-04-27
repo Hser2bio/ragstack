@@ -114,13 +114,11 @@ def call_litellm(payload):
 # endpoint modelos
 @app.get("/v1/models")
 def models():
-    return {
-        "object": "list",
-        "data": [
-            {"id": "llama3", "object": "model"},
-            {"id": "gpt4mini", "object": "model"}
-        ]
-    }
+    try:
+        res = requests.get("http://litellm:4000/v1/models", timeout=10)
+        return res.json()
+    except Exception as e:
+        return {"error": str(e)}
 
 
 # endpoint principal
