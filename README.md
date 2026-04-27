@@ -58,7 +58,7 @@ systemctl start docker
 ### 2. Clonar el repo
 
 ```bash
-git clone https://github.com/tu_usuario/ragstack.git
+git clone [https://github.com/tu_usuario/ragstack.git](https://github.com/Hser2bio/ragstack)
 cd ragstack
 ```
 
