@@ -1,0 +1,50 @@
+services:
+
+  ollama:
+    image: ollama/ollama
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    restart: unless-stopped
+
+  litellm:
+    image: docker.litellm.ai/berriai/litellm:main-stable
+    container_name: litellm
+    ports:
+      - "4000:4000"
+    volumes:
+      - /root/4/litellm_config.yaml:/app/config.yaml
+    command: ["--config", "/app/config.yaml"]
+    depends_on:
+      - ollama
+    restart: unless-stopped
+
+  rag:
+    image: python:3.11
+    container_name: rag
+    working_dir: /app
+    volumes:
+      - ./rag_service.py:/app/rag_service.py
+    command: >
+      sh -c "pip install fastapi uvicorn requests &&
+             uvicorn rag_service:app --host 0.0.0.0 --port 5000"
+    environment:
+      - SERPER_API_KEY=changeme
+    ports:
+      - "5000:5000"
+    depends_on:
+      - litellm
+      - ollama
+    restart: unless-stopped
+
+  webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: open-webui
+    ports:
+      - "3000:8080"
+    environment:
+      - OPENAI_API_BASE_URL=http://rag:5000   
+      - OPENAI_API_KEY=dummy
+    depends_on:
+      - rag
+    restart: unless-stopped
