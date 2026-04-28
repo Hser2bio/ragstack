@@ -84,6 +84,9 @@ docker compose up -d
 ```bash
 docker exec -it ollama ollama pull llama3
 docker exec -it ollama ollama pull phi3
+docker exec -it ollama ollama pull llama3.2:1b
+docker exec -it ollama ollama pull qwen2.5-coder:1.5b
+docker exec -it ollama ollama pull tinyllama
 docker exec -it ollama ollama list
 docker restart  open-webui
 ```
