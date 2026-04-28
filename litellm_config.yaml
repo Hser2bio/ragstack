@@ -1,9 +1,35 @@
 model_list:
-  - model_name: llama3
-    litellm_params:
-      model: ollama/llama3
-      api_base: http://ollama:11434
   - model_name: gpt4mini
     litellm_params:
       model: openrouter/openai/gpt-4o-mini
       api_key: "changeme"
+
+  - model_name: phi3
+    litellm_params:
+      model: ollama/phi3:latest
+      api_base: http://ollama:11434
+
+  - model_name: llama32_1b
+    litellm_params:
+      model: ollama/llama3.2:1b
+      api_base: http://ollama:11434
+
+   - model_name: qwen_1_5b
+    litellm_params:
+      model: ollama/qwen2.5:1.5b
+      api_base: http://ollama:11434
+
+  - model_name: qwen_coder
+    litellm_params:
+      model: ollama/qwen2.5-coder:1.5b
+      api_base: http://ollama:11434
+
+  - model_name: gemma_2b
+    litellm_params:
+      model: ollama/gemma:2b
+      api_base: http://ollama:11434
+
+  - model_name: tinyllama
+    litellm_params:
+      model: ollama/tinyllama:latest
+      api_base: http://ollama:11434
